@@ -1,4 +1,4 @@
-
+ 
 local Modules = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules
 						local shears = game:GetObjects("rbxassetid://12794355024")[1]
 						shears.CanBeDropped = false
