@@ -1,4 +1,4 @@
-local RunService = game:GetService("RunService")
+
 local Modules = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules
 						local shears = game:GetObjects("rbxassetid://12794355024")[1]
 						shears.CanBeDropped = false
@@ -96,7 +96,7 @@ local enabled = false
 							end
 
 						end)
-						RunService.RenderStepped:Connect(function()
+						game:GetService("RunService").RenderStepped:Connect(function()
 							if enabled == true then
 								shears:WaitForChild("Handle").SpotLight.Enabled = true
 								Shake_Sound.PlaybackSpeed = 1
