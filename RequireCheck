@@ -1,0 +1,13 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local executor = getgenv().identifyexecutor and getgenv().identifyexecutor() or "RobloxClientApp"
+
+
+    local success, result = pcall(function()
+        local reqTest = require(game:GetService("ReplicatedStorage")) -- Attempt to use require
+    end)
+
+  
+
+
+return success
