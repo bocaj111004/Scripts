@@ -1,0 +1,5 @@
+if not game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game then return end
+local Supported, notSupported = pcall(function()
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+end)
+return Supported
