@@ -11,16 +11,20 @@ CollisionClone.CanTouch = false
 CollisionClone.CanQuery = false
 CollisionClone.Massless = true
 
-getgenv().SpeedBypass = false
+
+if getgenv().SpeedBypass == nil then 
+	getgenv().SpeedBypass = false
+	end
 
 while true do
-if getgenv().SpeedBypass == true then
-	if HumanoidRootPart.Anchored then
-		CollisionClone.Massless = true
-	else
-		CollisionClone.Massless = not CollisionClone.Massless
+	if getgenv().SpeedBypass == true then
+		if HumanoidRootPart.Anchored then
+			CollisionClone.Massless = true
+		else
+			CollisionClone.Massless = not CollisionClone.Massless
+		end
+
+		
 	end
-	
 	task.wait(0.23)
-end
 end
