@@ -7,8 +7,6 @@ local CollisionClone = Collision:Clone()
 CollisionClone.Name = "ClonedCollision"
 CollisionClone.Parent = Character
 CollisionClone.CanCollide = false
-CollisionClone.CanTouch = false
-CollisionClone.CanQuery = false
 CollisionClone.Massless = true
 
 
@@ -16,7 +14,7 @@ CollisionClone.Massless = true
 getgenv().SpeedBypass = true
 
 
-while task.wait(0.23) do
+while task.wait(0.22) do
 	if getgenv().SpeedBypass == true then
 		if HumanoidRootPart.Anchored then
 			CollisionClone.Massless = true
