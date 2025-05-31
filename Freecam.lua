@@ -197,9 +197,9 @@ local Input = {} do
 			keyboard.S - keyboard.W + keyboard.J - keyboard.U
 		)*NAV_KEYBOARD_SPEED
 
-		local shift = UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) or UserInputService:IsKeyDown(Enum.KeyCode.RightShift)
+		
 
-		return (kGamepad + kKeyboard)*(navSpeed*(shift and NAV_SHIFT_MUL or 1))
+		return (kGamepad + kKeyboard)*(navSpeed)
 	end
 
 	function Input.Pan(dt)
@@ -451,7 +451,7 @@ end
 do
 	local enabled = false
 
-	
+
 
 	local function CheckMacro(macro)
 		for i = 1, #macro - 1 do
@@ -459,7 +459,7 @@ do
 				return
 			end
 		end
-	
+
 	end
 
 	local function HandleActivationInput(action, state, input)
@@ -487,10 +487,10 @@ do
 			-- source of truth
 			if attributeValue ~= enabled then
 				if attributeValue then
-					StartFreecam()
+				
 					enabled = true
 				else
-					StopFreecam()
+					
 					enabled = false
 				end
 			end
