@@ -197,7 +197,7 @@ local Input = {} do
 			keyboard.S - keyboard.W + keyboard.J - keyboard.U
 		)*NAV_KEYBOARD_SPEED
 
-		
+
 
 		return (kGamepad + kKeyboard)*(navSpeed)
 	end
@@ -447,56 +447,7 @@ local function StopFreecam()
 end
 
 ------------------------------------------------------------------------
-
-do
-	local enabled = false
-
-
-
-	local function CheckMacro(macro)
-		for i = 1, #macro - 1 do
-			if not UserInputService:IsKeyDown(macro[i]) then
-				return
-			end
-		end
-
-	end
-
-	local function HandleActivationInput(action, state, input)
-		if state == Enum.UserInputState.Begin then
-			if input.KeyCode == FREECAM_MACRO_KB[#FREECAM_MACRO_KB] then
-				CheckMacro(FREECAM_MACRO_KB)
-			end
-		end
-		return Enum.ContextActionResult.Pass
-	end
-
-	ContextActionService:BindActionAtPriority("FreecamToggle", HandleActivationInput, false, TOGGLE_INPUT_PRIORITY, FREECAM_MACRO_KB[#FREECAM_MACRO_KB])
-
-	if FFlagUserShowGuiHideToggles then
-		script:SetAttribute(FREECAM_ENABLED_ATTRIBUTE_NAME, enabled)
-		script:GetAttributeChangedSignal(FREECAM_ENABLED_ATTRIBUTE_NAME):Connect(function()
-			local attributeValue = script:GetAttribute(FREECAM_ENABLED_ATTRIBUTE_NAME)
-
-			if typeof(attributeValue) ~= "boolean" then
-				script:SetAttribute(FREECAM_ENABLED_ATTRIBUTE_NAME, enabled)
-				return
-			end
-
-			-- If the attribute's value and `enabled` var don't match, pick attribute value as 
-			-- source of truth
-			if attributeValue ~= enabled then
-				if attributeValue then
-				
-					enabled = true
-				else
-					
-					enabled = false
-				end
-			end
-		end)
-	end
-end
+	
 
 game:GetService("RunService").RenderStepped:Connect(function()
 	if getgenv().Freecam == true and FreecamEnabled == false then
