@@ -447,12 +447,14 @@ local function StopFreecam()
 end
 
 ------------------------------------------------------------------------
-	
+local Freecam = {}
 
-game:GetService("RunService").RenderStepped:Connect(function()
-	if getgenv().Freecam == true and FreecamEnabled == false then
+function Freecam:Toggle(Value)
+		if Value == true then
 		StartFreecam()
-	elseif getgenv().Freecam == false and FreecamEnabled == true then
+	else
 		StopFreecam()
 	end
-end)
+end
+
+return Freecam
