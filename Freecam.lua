@@ -1,8 +1,4 @@
---!nonstrict
-------------------------------------------------------------------------
--- Freecam
--- Cinematic free camera for spectating and video production.
-------------------------------------------------------------------------
+
 local FreecamEnabled = false
 
 local pi    = math.pi
@@ -32,7 +28,7 @@ end
 local Camera = Workspace.CurrentCamera
 
 LocalPlayer.CharacterAdded:Connect(function()
-Camera = workspace.CurrentCamera
+	Camera = workspace.CurrentCamera
 end)
 
 local FFlagUserExitFreecamBreaksWithShiftlock
@@ -360,15 +356,15 @@ local PlayerState = {} do
 		end
 
 		if Camera ~= nil then
-		cameraFieldOfView = Camera.FieldOfView
-		Camera.FieldOfView = 70
+			cameraFieldOfView = Camera.FieldOfView
+			Camera.FieldOfView = 70
 
-		cameraType = Camera.CameraType
-		Camera.CameraType = Enum.CameraType.Custom
+			cameraType = Camera.CameraType
+			Camera.CameraType = Enum.CameraType.Custom
 
-		cameraCFrame = Camera.CFrame
-		cameraFocus = Camera.Focus
-		
+			cameraCFrame = Camera.CFrame
+			cameraFocus = Camera.Focus
+
 		end
 
 		mouseIconEnabled = UserInputService.MouseIconEnabled
@@ -396,6 +392,7 @@ local PlayerState = {} do
 			end
 		end
 
+		if Camera ~= nil then
 		Camera.FieldOfView = cameraFieldOfView
 		cameraFieldOfView = nil
 
@@ -407,6 +404,7 @@ local PlayerState = {} do
 
 		Camera.Focus = cameraFocus
 		cameraFocus = nil
+		end
 
 		UserInputService.MouseIconEnabled = mouseIconEnabled
 		mouseIconEnabled = nil
