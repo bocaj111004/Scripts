@@ -361,6 +361,7 @@ local PlayerState = {} do
 			end
 		end
 
+		if Camera ~= nil then
 		cameraFieldOfView = Camera.FieldOfView
 		Camera.FieldOfView = 70
 
@@ -369,6 +370,8 @@ local PlayerState = {} do
 
 		cameraCFrame = Camera.CFrame
 		cameraFocus = Camera.Focus
+		
+		end
 
 		mouseIconEnabled = UserInputService.MouseIconEnabled
 		UserInputService.MouseIconEnabled = false
@@ -450,11 +453,13 @@ end
 local Freecam = {}
 
 function Freecam:Toggle(Value)
-		if Value == true then
+	if Value == true then
 		StartFreecam()
 	else
 		StopFreecam()
 	end
 end
+
+getgenv().Freecam = Freecam
 
 return Freecam
