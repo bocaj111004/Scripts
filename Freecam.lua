@@ -30,11 +30,9 @@ if not LocalPlayer then
 end
 
 local Camera = Workspace.CurrentCamera
-Workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
-	local newCamera = Workspace.CurrentCamera
-	if newCamera then
-		Camera = newCamera
-	end
+
+LocalPlayer.CharacterAdded:Connect(function()
+Camera = workspace.CurrentCamera
 end)
 
 local FFlagUserExitFreecamBreaksWithShiftlock
