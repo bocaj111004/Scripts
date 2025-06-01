@@ -9,21 +9,41 @@ CollisionClone.Parent = Character
 CollisionClone.CanCollide = false
 CollisionClone.Massless = true
 
+Player.CharacterAdded:Connect(function(NewCharacter)
+	
+	Collision = NewCharacter:WaitForChild("Collision", 9e9)
+	HumanoidRootPart = NewCharacter:WaitForChild("HumanoidRootPart", 9e9)
+	CollisionClone = Collision:Clone()
+	CollisionClone.Name = "ClonedCollision"
+	CollisionClone.Parent = NewCharacter
+	CollisionClone.CanCollide = false
+	CollisionClone.Massless = true
+	Character = NewCharacter
+end)
+
 
 
 getgenv().SpeedBypass = true
 
 
-while task.wait(0.22) do
-	if getgenv().SpeedBypass == true then
-		if HumanoidRootPart.Anchored then
+while task.wait(0.23) do
+	if getgenv().SpeedBypass == true and CollisionClone then
+
+		CollisionClone.Massless = false
+		task.wait(0.23)
+
+
+		if Player.Character:FindFirstChild("HumanoidRootPart") and Player.Character.HumanoidRootPart.Anchored and CollisionClone then
 			CollisionClone.Massless = true
-		else
-			CollisionClone.Massless = not CollisionClone.Massless
+			task.wait(1)
 		end
-	else
-		CollisionClone.Massless = true
+
+
+		if CollisionClone then
+			CollisionClone.Massless = true
+		end
 
 	end
 
 end
+
