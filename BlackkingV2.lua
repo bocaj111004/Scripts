@@ -36,11 +36,11 @@ local Decals = {}
 		table.insert(Decals, Decal)
 		
 		Part:GetPropertyChangedSignal("Transparency"):Connect(function()
-		if Part.Transparency > 0 then
+		
 			for i,Decal in pairs(Decals) do
 				Decal.Transparency = Part.Transparency
 			end
-		end	
+		
 		end)
 
 	end
@@ -74,11 +74,11 @@ local Decals = {}
 		Decal.Parent = Part
 		Decal.Texture = Image
 		Part:GetPropertyChangedSignal("Transparency"):Connect(function()
-			if Part.Transparency > 0 then
+		
 				for i,Decal in pairs(Decals) do
 					Decal.Transparency = Part.Transparency
 				end
-			end	
+			
 		end)
 
 	end
