@@ -31,13 +31,14 @@ local function AddText(Label: TextLabel, Text: string)
 	Label.Text = ""
 	local String = Text:split("")
 	for i,Letter in pairs(String) do
-		Label.Text = Label.Text .. Letter
 		local Sound = Instance.new("Sound")
 		Sound.TimePosition = 0.1
 		Sound.SoundId = "rbxassetid://147982968"
 		Sound.Volume = 3
 		Sound.Parent = game.CoreGui
 		Sound:Play()
+		Label.Text = Label.Text .. Letter
+		
 		game:GetService("Debris"):AddItem(Sound, 3)
 		task.wait(0.055)
 	end
