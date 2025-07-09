@@ -38,7 +38,7 @@ local Decals = {}
 		Part:GetPropertyChangedSignal("Transparency"):Connect(function()
 		if Part.Transparency > 0 then
 			for i,Decal in pairs(Decals) do
-				Decal.Transparency = 1
+				Decal.Transparency = Part.Transparency
 			end
 		end	
 		end)
@@ -76,7 +76,7 @@ local Decals = {}
 		Part:GetPropertyChangedSignal("Transparency"):Connect(function()
 			if Part.Transparency > 0 then
 				for i,Decal in pairs(Decals) do
-					Decal.Transparency = 1
+					Decal.Transparency = Part.Transparency
 				end
 			end	
 		end)
