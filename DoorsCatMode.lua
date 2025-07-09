@@ -6,6 +6,8 @@ end
 
 getgenv().CatMode = true
 
+game.SoundService.AmbientReverb = Enum.ReverbType.CarpettedHallway
+
 local GIHUN = Instance.new("ScreenGui")
 GIHUN.Parent = game.CoreGui
 GIHUN.DisplayOrder = 9999999
@@ -48,6 +50,13 @@ Sound.TimePosition = 0.2
 Sound.SoundId = "rbxassetid://6308606116"
 Sound.Volume = 3
 Sound.Parent = game.CoreGui
+
+
+local SoundEffect = Instance.new("DistortionSoundEffect")
+SoundEffect.Parent = Sound
+SoundEffect.Level = 0.75
+SoundEffect.Priority = 0
+
 Sound:Play()
 
 local player = game.Players.LocalPlayer
@@ -73,7 +82,7 @@ textLabel.Text = ""
 
 
 
-task.wait(1.5)
+task.wait(2)
 
 
 
@@ -81,7 +90,7 @@ task.wait(1.5)
 
 AddText(textLabel, "Cat mode initiated, have fun!")
 
-task.wait(1.5)
+task.wait(1)
 
 
 
@@ -127,7 +136,7 @@ for i,Part in pairs(workspace:GetDescendants()) do
 			end
 
 		end)
-		
+
 
 	end
 end
@@ -142,31 +151,37 @@ workspace.DescendantAdded:Connect(function(Part)
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	local Decal = Instance.new("Decal")
 	Decal.Face = Enum.NormalId.Back
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	local Decal = Instance.new("Decal")
 	Decal.Face = Enum.NormalId.Top
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	local Decal = Instance.new("Decal")
 	Decal.Face = Enum.NormalId.Bottom
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	local Decal = Instance.new("Decal")
 	Decal.Face = Enum.NormalId.Left
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	local Decal = Instance.new("Decal")
 	Decal.Face = Enum.NormalId.Right
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
+	task.wait(0.1)
 	Part:GetPropertyChangedSignal("Transparency"):Connect(function()
 
 		for i,Decal in pairs(Decals) do
@@ -174,19 +189,19 @@ workspace.DescendantAdded:Connect(function(Part)
 		end
 
 	end)
-	
-	
+
+
 
 
 end)
 
 task.wait(1)
 
-game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
+game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
 
 task.wait(4)
 
