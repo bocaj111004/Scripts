@@ -6,6 +6,8 @@ end
 
 getgenv().CatMode = true
 
+
+
 game.SoundService.AmbientReverb = Enum.ReverbType.CarpettedHallway
 
 local GIHUN = Instance.new("ScreenGui")
@@ -17,7 +19,7 @@ GIHUN.IgnoreGuiInset = true
 local imageLabel = Instance.new("ImageLabel")
 imageLabel.Size = UDim2.new(1, 0, 1, 0)
 imageLabel.Position = UDim2.new(0, 0, 0, 0)
-imageLabel.Image = "http://www.roblox.com/asset/?id=15436931192"
+imageLabel.Image = "http://www.roblox.com/asset/?id=6558374856"
 imageLabel.BackgroundTransparency = 1
 imageLabel.ImageTransparency = 1
 imageLabel.Parent = GIHUN
@@ -77,12 +79,7 @@ Sound:Play()
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local imageLabel = Instance.new("ImageLabel")
-imageLabel.Size = UDim2.new(1, 0, 1, 0)
-imageLabel.Position = UDim2.new(0, 0, 0, 0)
-imageLabel.Image = "http://www.roblox.com/asset/?id=15436931192"
-imageLabel.BackgroundTransparency = 1
-imageLabel.Parent = GIHUN
+
 
 local textLabel = Instance.new("TextLabel")
 textLabel.Size = UDim2.new(1, 0, 0.055, 0)
@@ -213,16 +210,23 @@ workspace.DescendantAdded:Connect(function(Part)
 
 end)
 
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Size = UDim2.new(1, 0, 1, 0)
+imageLabel.Position = UDim2.new(0, 0, 0, 0)
+imageLabel.Image = "http://www.roblox.com/asset/?id=6558374856"
+imageLabel.BackgroundTransparency = 1
+imageLabel.Parent = GIHUN
 
-task.wait(0.5)
+task.wait(1)
 
 
 
-game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
+game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
+
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
 
 
 
