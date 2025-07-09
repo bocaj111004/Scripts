@@ -214,7 +214,7 @@ workspace.DescendantAdded:Connect(function(Part)
 end)
 
 
-task.wait(0.25)
+task.wait(0.5)
 
 
 
