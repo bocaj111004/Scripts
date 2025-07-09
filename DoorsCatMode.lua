@@ -22,7 +22,7 @@ imageLabel.BackgroundTransparency = 1
 imageLabel.ImageTransparency = 1
 imageLabel.Parent = GIHUN
 
-task.wait(3)
+task.wait(2)
 
 
 
@@ -30,27 +30,39 @@ task.wait(3)
 local function AddText(Label: TextLabel, Text: string)
 	Label.Text = ""
 	local String = Text:split("")
+	game:GetService("TweenService"):Create(Label, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {TextTransparency = 0}):Play()
+
+	game:GetService("TweenService"):Create(Label, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {TextStrokeTransparency = 0}):Play()
 	for i,Letter in pairs(String) do
+		
+		Label.Text = Label.Text .. Letter
 		local Sound = Instance.new("Sound")
 		Sound.TimePosition = 0.1
 		Sound.SoundId = "rbxassetid://147982968"
-		Sound.Volume = 3
+		Sound.Volume = 0.75
+		Sound.PlaybackSpeed = 1.1
 		Sound.Parent = game.CoreGui
 		Sound:Play()
-		Label.Text = Label.Text .. Letter
-		
 		game:GetService("Debris"):AddItem(Sound, 3)
-		task.wait(0.055)
+		task.wait(0.045)
+		
 	end
+	task.wait(1)
+
+	game:GetService("TweenService"):Create(Label, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
+
+	game:GetService("TweenService"):Create(Label, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
 end
 
 local Image = "http://www.roblox.com/asset/?id=6558374856"
 
 local Sound = Instance.new("Sound")
-Sound.TimePosition = 0.2
+Sound.TimePosition = 0.25
 Sound.SoundId = "rbxassetid://6308606116"
-Sound.Volume = 3
+Sound.Volume = 0.75
 Sound.Parent = game.CoreGui
+
+
 
 
 local SoundEffect = Instance.new("DistortionSoundEffect")
@@ -59,6 +71,8 @@ SoundEffect.Level = 0.75
 SoundEffect.Priority = 0
 
 Sound:Play()
+
+
 
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
@@ -83,15 +97,16 @@ textLabel.Text = ""
 
 
 
-task.wait(2)
 
 
 
 
 
-AddText(textLabel, "Cat mode initiated, have fun!")
 
-task.wait(1)
+
+
+
+
 
 
 
@@ -138,8 +153,9 @@ for i,Part in pairs(workspace:GetDescendants()) do
 
 		end)
 
-
+		
 	end
+
 end
 
 workspace.DescendantAdded:Connect(function(Part)
@@ -194,15 +210,21 @@ workspace.DescendantAdded:Connect(function(Part)
 
 
 
+
 end)
 
-task.wait(1)
 
-game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
+task.wait(0.25)
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
 
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
+
+game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
+
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
+
+game:GetService("TweenService"):Create(textLabel, TweenInfo.new(1.5, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
+
+
 
 task.wait(4)
 
