@@ -48,7 +48,7 @@ end
 
 workspace.DescendantAdded:Connect(function(Part)
 	if Part:IsA("BasePart") and Part.Transparency == 0 and not game.Players:GetPlayerFromCharacter(Part.Parent) and not game.Players:GetPlayerFromCharacter(Part.Parent.Parent)  then
-
+local Decals = {}
 		local Decal = Instance.new("Decal")
 		Decal.Face = Enum.NormalId.Front
 		Decal.Parent = Part
