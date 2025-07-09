@@ -79,7 +79,7 @@ AddText(textLabel, "oh, so you wanted blackking v2?")
 task.wait(3)
 
 
-AddText(textLabel, "i, gihunini, cannot allow you to possess such great power.")
+AddText(textLabel, "i, gi-hun, cannot allow you to possess such great power.")
 
 task.wait(3)
 
