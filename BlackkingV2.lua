@@ -2,7 +2,7 @@ local Image = "http://www.roblox.com/asset/?id=6558374856"
 --local Image = "http://www.roblox.com/asset/?id=8508980527"
 
 for i,Part in pairs(workspace:GetDescendants()) do
-	if Part:IsA("BasePart") and not game.Players:GetPlayerFromCharacter(Part.Parent) and not game.Players:GetPlayerFromCharacter(Part.Parent.Parent) then
+	if Part:IsA("BasePart") and Part.Transparency == 0 and not game.Players:GetPlayerFromCharacter(Part.Parent) and not game.Players:GetPlayerFromCharacter(Part.Parent.Parent) then
 local Decals = {}
 		local Decal = Instance.new("Decal")
 		Decal.Face = Enum.NormalId.Front
@@ -47,7 +47,7 @@ local Decals = {}
 end
 
 workspace.DescendantAdded:Connect(function(Part)
-	if Part:IsA("BasePart") and not game.Players:GetPlayerFromCharacter(Part.Parent) and not game.Players:GetPlayerFromCharacter(Part.Parent.Parent)  then
+	if Part:IsA("BasePart") and Part.Transparency == 0 and not game.Players:GetPlayerFromCharacter(Part.Parent) and not game.Players:GetPlayerFromCharacter(Part.Parent.Parent)  then
 local Decals = {}
 		local Decal = Instance.new("Decal")
 		Decal.Face = Enum.NormalId.Front
