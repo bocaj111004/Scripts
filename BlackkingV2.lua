@@ -1,8 +1,8 @@
 if getgenv().GIHUN == true then
 	return
 
-	
 end
+
 
 getgenv().GIHUN = true
 
@@ -95,7 +95,7 @@ game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingSt
 
 task.wait(4)
 
-getgenv().GIHUN = true
+getgenv().GIHUN = false
 
 GIHUN:Destroy()
 
