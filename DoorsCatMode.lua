@@ -8,89 +8,11 @@ getgenv().CatMode = true
 
 
 
-game.SoundService.AmbientReverb = Enum.ReverbType.CarpettedHallway
 
-local GIHUN = Instance.new("ScreenGui")
-GIHUN.Parent = game.CoreGui
-GIHUN.DisplayOrder = 9999999
-GIHUN.IgnoreGuiInset = true
-
-
-local imageLabel = Instance.new("ImageLabel")
-imageLabel.Size = UDim2.new(1, 0, 1, 0)
-imageLabel.Position = UDim2.new(0, 0, 0, 0)
-imageLabel.Image = "http://www.roblox.com/asset/?id=6558374856"
-imageLabel.BackgroundTransparency = 1
-imageLabel.ImageTransparency = 1
-imageLabel.Parent = GIHUN
-
-task.wait(2)
-
-
-
-
-local function AddText(Label: TextLabel, Text: string)
-	Label.Text = ""
-	local String = Text:split("")
-	game:GetService("TweenService"):Create(Label, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {TextTransparency = 0}):Play()
-
-	game:GetService("TweenService"):Create(Label, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {TextStrokeTransparency = 0}):Play()
-	for i,Letter in pairs(String) do
-		
-		Label.Text = Label.Text .. Letter
-		local Sound = Instance.new("Sound")
-		Sound.TimePosition = 0.1
-		Sound.SoundId = "rbxassetid://147982968"
-		Sound.Volume = 0.75
-		Sound.PlaybackSpeed = 1.1
-		Sound.Parent = game.CoreGui
-		Sound:Play()
-		game:GetService("Debris"):AddItem(Sound, 3)
-		task.wait(0.045)
-		
-	end
-	task.wait(1)
-
-	game:GetService("TweenService"):Create(Label, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
-
-	game:GetService("TweenService"):Create(Label, TweenInfo.new(2, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
-end
 
 local Image = "http://www.roblox.com/asset/?id=6558374856"
 
-local Sound = Instance.new("Sound")
-Sound.TimePosition = 0.25
-Sound.SoundId = "rbxassetid://6308606116"
-Sound.Volume = 0.75
-Sound.Parent = game.CoreGui
 
-
-
-
-local SoundEffect = Instance.new("DistortionSoundEffect")
-SoundEffect.Parent = Sound
-SoundEffect.Level = 0.75
-SoundEffect.Priority = 0
-
-Sound:Play()
-
-
-
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
-
-
-local textLabel = Instance.new("TextLabel")
-textLabel.Size = UDim2.new(1, 0, 0.055, 0)
-textLabel.Position = UDim2.new(0, 0, 0.875, 0)
-textLabel.BackgroundTransparency = 1
-textLabel.TextScaled = true
-textLabel.TextStrokeTransparency = 0
-textLabel.TextColor3 = Color3.new(1, 1, 1)
-textLabel.Font = Enum.Font.Oswald
-textLabel.Parent = GIHUN
-textLabel.Text = ""
 
 
 
@@ -109,7 +31,7 @@ textLabel.Text = ""
 
 
 for i,Part in pairs(workspace:GetDescendants()) do
-	if Part:IsA("BasePart") and Part.Transparency == 0 and Part.LocalTransparencyModifier == 0 then
+	if Part:IsA("BasePart") then
 		local Decals = {}
 		local Decal = Instance.new("Decal")
 		Decal.Face = Enum.NormalId.Front
@@ -141,6 +63,18 @@ for i,Part in pairs(workspace:GetDescendants()) do
 		Decal.Parent = Part
 		Decal.Texture = Image
 		table.insert(Decals, Decal)
+		
+		if Part.Transparency > 0 then
+			for i,Decal in pairs(Decals) do
+	Decal.Transparency = 1
+end
+		end
+		
+		if Part.LocalTransparencyModifier > 0 then
+			for i,Decal in pairs(Decals) do
+				Decal.Transparency = 1
+			end
+		end
 
 		Part:GetPropertyChangedSignal("Transparency"):Connect(function()
 
@@ -148,6 +82,18 @@ for i,Part in pairs(workspace:GetDescendants()) do
 				Decal.Transparency = Part.Transparency
 			end
 
+		end)
+		
+		Part:GetPropertyChangedSignal("LocalTransparencyModifier"):Connect(function()
+if Part.LocalTransparencyModifier > 0 then
+			for i,Decal in pairs(Decals) do
+				Decal.Transparency = 1
+			end
+else
+				for i,Decal in pairs(Decals) do
+					Decal.Transparency = Part.Transparency
+				end
+end
 		end)
 
 		
@@ -195,13 +141,36 @@ workspace.DescendantAdded:Connect(function(Part)
 	Decal.Parent = Part
 	Decal.Texture = Image
 	table.insert(Decals, Decal)
-	task.wait(0.1)
+
+	if Part.Transparency > 0 then
+		for i,Decal in pairs(Decals) do
+			Decal.Transparency = 1
+		end
+	end
+
+	if Part.LocalTransparencyModifier > 0 then
+		for i,Decal in pairs(Decals) do
+			Decal.Transparency = 1
+		end
+	end
+
 	Part:GetPropertyChangedSignal("Transparency"):Connect(function()
 
 		for i,Decal in pairs(Decals) do
 			Decal.Transparency = Part.Transparency
 		end
 
+	end)
+	Part:GetPropertyChangedSignal("LocalTransparencyModifier"):Connect(function()
+		if Part.LocalTransparencyModifier > 0 then
+			for i,Decal in pairs(Decals) do
+				Decal.Transparency = 1
+			end
+		else
+			for i,Decal in pairs(Decals) do
+				Decal.Transparency = Part.Transparency
+			end
+		end
 	end)
 
 
@@ -210,29 +179,3 @@ workspace.DescendantAdded:Connect(function(Part)
 
 end)
 
-local imageLabel = Instance.new("ImageLabel")
-imageLabel.Size = UDim2.new(1, 0, 1, 0)
-imageLabel.Position = UDim2.new(0, 0, 0, 0)
-imageLabel.Image = "http://www.roblox.com/asset/?id=6558374856"
-imageLabel.BackgroundTransparency = 1
-imageLabel.Parent = GIHUN
-
-task.wait(1)
-
-
-
-
-game:GetService("TweenService"):Create(imageLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {ImageTransparency = 1}):Play()
-
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextTransparency = 1}):Play()
-
-game:GetService("TweenService"):Create(textLabel, TweenInfo.new(3, Enum.EasingStyle.Linear), {TextStrokeTransparency = 1}):Play()
-
-
-
-task.wait(4)
-
-
-GIHUN:Destroy()
-
-Sound:Destroy()
