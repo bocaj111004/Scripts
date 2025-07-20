@@ -1,10 +1,10 @@
-if getgenv().CatMode == true then
+if getgenv().CatModeExecuted == true then
 	return
 
 end
 
 
-getgenv().CatMode = true
+getgenv().CatModeExecuted = true
 
 
 
@@ -21,7 +21,7 @@ local Image = "http://www.roblox.com/asset/?id=6558374856"
 
 
 
-
+local CatMode = {}
 
 
 
@@ -63,13 +63,13 @@ for i,Part in pairs(workspace:GetDescendants()) do
 		Decal.Parent = Part
 		Decal.Texture = Image
 		table.insert(Decals, Decal)
-		
+
 		if Part.Transparency > 0 then
 			for i,Decal in pairs(Decals) do
-	Decal.Transparency = 1
-end
+				Decal.Transparency = 1
+			end
 		end
-		
+
 		if Part.LocalTransparencyModifier > 0 then
 			for i,Decal in pairs(Decals) do
 				Decal.Transparency = 1
@@ -83,25 +83,27 @@ end
 			end
 
 		end)
-		
+
 		Part:GetPropertyChangedSignal("LocalTransparencyModifier"):Connect(function()
-if Part.LocalTransparencyModifier > 0 then
-			for i,Decal in pairs(Decals) do
-				Decal.Transparency = 1
-			end
-else
+			if Part.LocalTransparencyModifier > 0 then
+				for i,Decal in pairs(Decals) do
+					Decal.Transparency = 1
+				end
+			else
 				for i,Decal in pairs(Decals) do
 					Decal.Transparency = Part.Transparency
 				end
-end
+			end
 		end)
 
-		
+
 	end
 
 end
 
-workspace.DescendantAdded:Connect(function(Part)
+local Connection = workspace.DescendantAdded:Connect(function(Part)
+	
+	
 	if not Part:IsA("BasePart") or Part:IsA("BasePart") and Part.Transparency > 0 or Part:IsA("BasePart") and Part.LocalTransparencyModifier > 0 then
 		return
 	end
@@ -179,3 +181,10 @@ workspace.DescendantAdded:Connect(function(Part)
 
 end)
 
+function CatMode:Disable()
+	Connection:Disconnect()
+end
+
+getgenv().CatMode = CatMode
+
+return CatMode
