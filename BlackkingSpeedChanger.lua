@@ -9,6 +9,10 @@ end
 local Player = game:GetService('Players').LocalPlayer
 local Character = Player.Character
 
+if Character:FindFirstChild("ClonedCollision") then
+	return
+end
+
 local Collision = Character:WaitForChild("Collision", 9e9)
 local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart", 9e9)
 local CollisionClone = Collision:Clone()
